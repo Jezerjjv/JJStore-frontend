@@ -1,0 +1,55 @@
+/* src/components/ProductDetail.css */
+
+.product-detail {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .gallery-container {
+    margin:0px auto;
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    height: 500px; /* Altura fija para evitar cambios en el layout */
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f9f9f9; /* Fondo para cuando la imagen no llena el contenedor */
+    overflow: hidden; /* Oculta partes de la imagen que se salen del contenedor */
+  }
+  
+  .product-image {
+    padding:10px;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* Mantiene la proporción de la imagen dentro del contenedor */
+  }
+  
+  .nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    z-index: 10;
+    background: transparent;
+    color: grey;
+    font-weight: 900;
+    border-radius: 50px;
+  }
+  
+  .prev {
+    left: 10px;
+  }
+  
+  .next {
+    right: 10px;
+  }  
+  
+
+ 

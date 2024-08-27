@@ -1,0 +1,15 @@
+.product-dimensions {
+  text-align: left;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.product-dimensions h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.product-dimensions p {
+  font-size: 16px;
+  margin: 5px 0;
+}

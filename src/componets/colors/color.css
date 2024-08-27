@@ -1,0 +1,64 @@
+/* src/components/ProductDetail.css */
+.product-colors {
+  padding:10px;
+  text-align: left;
+}
+
+.filament-options {
+  display: flex;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+.filament-swatch {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.filament-swatch.selected {
+  transform: scale(1.1);
+}
+
+.filament-swatch::before {
+  content: "";
+  width: 70%;
+  height: 70%;
+  border-radius: 50%;
+  background-color: #fff;
+  position: absolute;
+  top: 15%;
+  left: 15%;
+}
+
+.filament-spool {
+  width: 80%;
+  height: 80%;
+  border-radius: 50%;
+  background-color: inherit;
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  border: 3px solid #ccc;
+}
+
+.filament-spool::before,
+.filament-spool::after {
+  content: "";
+  position: absolute;
+  width: 50%;
+  height: 50%;
+  border-radius: 50%;
+  background-color: inherit;
+  top: 25%;
+  left: 25%;
+}
+
+.product-colors h3 {
+  font-size: 18px;
+  margin-bottom: 15px;
+}

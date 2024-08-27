@@ -1,0 +1,38 @@
+.main{
+  margin: 0px auto;
+  width: 95%;
+  height: 100vh;
+  display: grid;
+  grid-template-areas:
+    "header header header header "
+    "container container container container "
+    "container container container container "
+    "container container container container "
+    "container container container container "
+    "container container container container "
+    "footer footer footer footer ";
+}
+
+.header {
+  max-height: 150px;
+  min-height: 150px;
+  grid-area: header;
+  background-color: #E9ECEF ;
+  color: #FFFFFF;
+}
+
+.footer {
+  max-height: 150px;
+  min-height: 150px;
+  width: 100%;
+  grid-area: footer;
+  background-color: #F8F9FA  ;
+  color: #343A40;
+}
+
+.container-p {
+  width: 100%;
+  background-color: #FFFFFF ;
+  color: #333333;
+    grid-area: container;
+}

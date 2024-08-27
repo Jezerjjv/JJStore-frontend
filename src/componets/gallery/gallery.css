@@ -1,0 +1,64 @@
+/* src/components/ImageGallery.css */
+.image-gallery {
+    position: relative;
+    max-width: 600px;
+    margin: 20px auto;
+  }
+  
+  .image-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  .gallery-image {
+    width: 100%;
+    display: block;
+    border-radius: 8px;
+  }
+  
+  .gallery-controls {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+  }
+  
+  .gallery-btn {
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 8px 16px;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+  }
+  
+  .gallery-btn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  
+  .gallery-dots {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  
+  .dot {
+    height: 12px;
+    width: 12px;
+    margin: 0 4px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .dot.active {
+    background-color: #717171;
+  }
+  
