@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {useState } from 'react';
 import {
     Typography,
     Container,
@@ -48,7 +48,7 @@ export default function Products() {
     const [category, setCategory] = useState('');
     const [filteredProducts, setFilteredProducts] = useState([]);
 
-    const { data, error, isLoading } = useSWR('http://localhost:3977/products', fetcher, {
+    const { data, error, isLoading } = useSWR(`${process.env.REACT_APP_API}products`, fetcher, {
         onSuccess: (data) => {
             setFilteredProducts(data);
         },
@@ -58,7 +58,7 @@ export default function Products() {
     if (isLoading || isLoadingCategories) return <Loader />
     if (error || errorCategories) return <OutOfService />
 
-    const categories = dataOfCategories != null && dataOfCategories != undefined && dataOfCategories.length > 0 ? dataOfCategories : [];
+    const categories = dataOfCategories !== null && dataOfCategories !== undefined && dataOfCategories.length > 0 ? dataOfCategories : [];
     return displayProduct(data, categories);
 
 

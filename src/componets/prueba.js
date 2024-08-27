@@ -11,7 +11,6 @@ import {
     TextField,
     Chip,
     Box,
-    Link,
 } from '@mui/material';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { Search, Info } from '@mui/icons-material';
@@ -37,7 +36,7 @@ export default function Component() {
 
     if (isLoading) return <Loader />
     if (error) return <OutOfService />
-    const products = data != null && data != undefined && data.length > 0 ? data : [];
+    const products = data !== null && data !== undefined && data.length > 0 ? data : [];
     console.log(products);
     const filteredProducts = products.filter(product =>
         product.producto_nombre.toLowerCase().includes(searchTerm.toLowerCase())

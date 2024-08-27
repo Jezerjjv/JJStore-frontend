@@ -42,12 +42,12 @@ export default function CategoryAdminPanelMUI() {
       };
 
       // Actualización optimista
-      mutate('http://localhost:3977/categories',
+      mutate(`${process.env.REACT_APP_API}categories`,
         { ...data, categories: [...categories, newCategory], totalItems: totalCount + 1 }
         , false);
 
       try {
-        const response = await fetch('http://localhost:3977/categories', {
+        const response = await fetch(`${process.env.REACT_APP_API}categories`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(newCategory)
@@ -66,7 +66,7 @@ export default function CategoryAdminPanelMUI() {
         toast.error(`Hubo un problema al crear la categoria ${newCategory.nombre}`);
         console.error('Error adding category:', error);
         // Revertir la actualización optimista
-        mutate('/http://localhost:3977/categories');
+        mutate(`${process.env.REACT_APP_API}categories`);
       }
     }
   };
@@ -79,13 +79,13 @@ export default function CategoryAdminPanelMUI() {
     if (editingCategory) {
       // Actualización optimista
       mutate(
-        'http://localhost:3977/categories',
+        `${process.env.REACT_APP_API}categories`,
         categories.map(c => c.id === editingCategory.id ? editingCategory : c),
         false
       );
 
       try {
-        const response = await fetch(`http://localhost:3977/categories/${editingCategory.id}`, {
+        const response = await fetch(`${process.env.REACT_APP_API}categories/${editingCategory.id}`, {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(editingCategory)
@@ -98,13 +98,13 @@ export default function CategoryAdminPanelMUI() {
 
 
         // Revalidar los datos
-        mutate('http://localhost:3977/categories');
+        mutate(`${process.env.REACT_APP_API}categories`);
         setEditingCategory(null);
       } catch (error) {
         toast.error('Fallo la edición de la categoria');
         console.error('Error updating category:', error);
         // Revertir la actualización optimista
-        mutate('http://localhost:3977/categories');
+        mutate(`${process.env.REACT_APP_API}categories`);
       }
     }
   };
@@ -117,13 +117,13 @@ export default function CategoryAdminPanelMUI() {
   const deleteCategory = async (id) => {
     // Actualización optimista
     mutate(
-      'http://localhost:3977/categories',
+      `${process.env.REACT_APP_API}categories`,
       { ...data, categories: categories.filter(c => c.id !== id), totalItems: totalCount - 1 },
       false
     );
 
     try {
-      const response = await fetch(`http://localhost:3977/categories/${id}`, {
+      const response = await fetch(`${process.env.REACT_APP_API}categories/${id}`, {
         method: 'DELETE'
       });
 
@@ -138,7 +138,7 @@ export default function CategoryAdminPanelMUI() {
       toast.error('Fallo la eliminacion de la categoria');
       console.error('Error deleting category:', error);
       // Revertir la actualización optimista
-      mutate('/http://localhost:3977/categories');
+      mutate(`${process.env.REACT_APP_API}categories`);
     }
   };
 
@@ -156,7 +156,7 @@ export default function CategoryAdminPanelMUI() {
     setPage(0);
   }
 
-  const categories = data != null && data != undefined && data.length > 0 ? data : [];
+  const categories = data !== null && data !== undefined && data.length > 0 ? data : [];
   const totalCount = categories.length > 0 ? data.length : 0;
 
   if (error) return <Typography color="error">Error al cargar las categorías</Typography>;

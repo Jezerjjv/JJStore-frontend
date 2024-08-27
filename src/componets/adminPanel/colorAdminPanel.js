@@ -50,12 +50,12 @@ export const ColorAdminPanel = () => {
             };
 
             // Actualización optimista
-            mutate('http://localhost:3977/colors',
+            mutate(`${process.env.REACT_APP_API}colors`,
                 { ...data, colors: [...colors, newColor], totalItems: totalCount + 1 }
                 , false);
 
             try {
-                const response = await fetch('http://localhost:3977/colors', {
+                const response = await fetch(`${process.env.REACT_APP_API}colors`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(newColor)
@@ -68,27 +68,27 @@ export const ColorAdminPanel = () => {
                 toast.success(`Se creo el color ${newColor.nombre} correctamente`);
 
                 // Revalidar los datos
-                mutate('http://localhost:3977/colors');
+                mutate(`${process.env.REACT_APP_API}colors`);
                 setNewColorCodigo('');
                 setNewColorName('');
             } catch (error) {
                 toast.error(`Hubo un problema al crear el color ${newColor.nombre}`);
                 console.error('Error adding color:', error);
                 // Revertir la actualización optimista
-                mutate('/http://localhost:3977/colors');
+                mutate(`${process.env.REACT_APP_API}colors`);
             }
         }
     }
 
     const deleteColor = async (id) => {
         mutate(
-            'http://localhost:3977/colors',
+            `${process.env.REACT_APP_API}colors`,
             { ...data, colors: colors.filter(c => c.id !== id), totalItems: totalCount - 1 },
             false
         );
 
         try {
-            const response = await fetch(`http://localhost:3977/colors/${id}`, {
+            const response = await fetch(`${process.env.REACT_APP_API}colors/${id}`, {
                 method: 'DELETE'
             });
 
@@ -103,7 +103,7 @@ export const ColorAdminPanel = () => {
             toast.error('Fallo la eliminacion del color');
             console.error('Error deleting color:', error);
             // Revertir la actualización optimista
-            mutate('/http://localhost:3977/colors');
+            mutate(`${process.env.REACT_APP_API}colors`);
         }
     };
 
@@ -111,13 +111,13 @@ export const ColorAdminPanel = () => {
         if (editingColor) {
             // Actualización optimista
             mutate(
-                'http://localhost:3977/colors',
+                `${process.env.REACT_APP_API}colors`,
                 colors.map(c => c.id === editingColor.id ? editingColor : c),
                 false
             );
 
             try {
-                const response = await fetch(`http://localhost:3977/colors/${editingColor.id}`, {
+                const response = await fetch(`${process.env.REACT_APP_API}colors/${editingColor.id}`, {
                     method: 'PUT',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(editingColor)
@@ -130,13 +130,13 @@ export const ColorAdminPanel = () => {
 
 
                 // Revalidar los datos
-                mutate('http://localhost:3977/colors');
+                mutate(`${process.env.REACT_APP_API}colors`);
                 setEditingColor(null);
             } catch (error) {
                 toast.error('Fallo la edición del color');
                 console.error('Error updating color:', error);
                 // Revertir la actualización optimista
-                mutate('http://localhost:3977/colors');
+                mutate(`${process.env.REACT_APP_API}colors`);
             }
         }
     }
@@ -154,7 +154,7 @@ export const ColorAdminPanel = () => {
         setSearchTerm(event.target.value);
         setPage(0);
     }
-    const colors = data != null && data != undefined && data.length > 0 ? data : [];
+    const colors = data !== null && data !== undefined && data.length > 0 ? data : [];
     const totalCount = colors.length > 0 ? data.length : 0;
 
     if (error) return <OutOfService />;

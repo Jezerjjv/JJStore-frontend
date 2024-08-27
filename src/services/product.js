@@ -1,19 +1,19 @@
 import { useSWR_API } from "../componets/useSWR_API";
 
 export const GetProducts = () => {
-    return useSWR_API("http://localhost:3977/products");
+    return useSWR_API(`${process.env.REACT_APP_API}products`);
 }
 
 export const GetAllProducts = () => {
-    return useSWR_API("http://localhost:3977/allproducts");
+    return useSWR_API(`${process.env.REACT_APP_API}allproducts`);
 }
 
 export const GetProductById = (id) => {
-    return useSWR_API(`http://localhost:3977/product/${id}`);
+    return useSWR_API(`${process.env.REACT_APP_API}product/${id}`);
 }
 
 export const EnabledProduct = (id, isEnabled) => {
-    return fetch(`http://localhost:3977/product/enabled/${id}`, isEnabled)
+    return fetch(`${process.env.REACT_APP_API}product/enabled/${id}`, isEnabled)
         .then(data => {
             return data;
         }).then(data => {
@@ -26,7 +26,7 @@ export const DeleteProducto = (id) =>{
 }
 
 export const SaveProduct = (product) => {
-    fetch(`http://localhost:3977/product/save`, product)
+    fetch(`${process.env.REACT_APP_API}product/save`, product)
         .then(data => {
             return data.json();
         }).then(data => {

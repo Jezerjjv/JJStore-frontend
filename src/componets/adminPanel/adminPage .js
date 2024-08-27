@@ -5,7 +5,7 @@ import { Loader } from '../loader/loader';
 import OutOfService from '../error/outOfService/outOfService';
 import { ProductForm } from '../products/productForm/productForm';
 import { mutate } from 'swr';
-import { Toaster, toast } from 'sonner'
+import {toast } from 'sonner'
 
 import {
     Button,
@@ -19,13 +19,13 @@ const AdminPage = () => {
 
     const handleDelete = async (id) => {
         mutate(
-            'http://localhost:3977/allproducts',
+            `${process.env.REACT_APP_API}allproducts`,
             { ...data, products: products.filter(c => c.id !== id), totalItems: totalCount - 1 },
             false
         );
 
         try {
-            const response = await fetch(`http://localhost:3977/products/${id}`, {
+            const response = await fetch(`${process.env.REACT_APP_API}allproducts/${id}`, {
                 method: 'DELETE'
             });
 
@@ -40,7 +40,7 @@ const AdminPage = () => {
             toast.error('Fallo la eliminacion del color');
             console.error('Error deleting color:', error);
             // Revertir la actualización optimista
-            mutate('/http://localhost:3977/allproducts');
+            mutate(`${process.env.REACT_APP_API}allproducts`);
         }
     };
 
@@ -68,7 +68,7 @@ const AdminPage = () => {
     if (isLoading) return <Loader />
     if (error) return <OutOfService />
 
-    const products = data != null && data != undefined && data.length > 0 ? data : [];
+    const products = data !== null && data !== undefined && data.length > 0 ? data : [];
     const totalCount = products.length > 0 ? data.length : 0;
 
     return panel(products, handleEdit, handleDelete, enabledProduct, isNew);
