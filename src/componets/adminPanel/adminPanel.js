@@ -16,12 +16,13 @@ import {
 } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { Toaster} from 'sonner'
 
 const AdminPanel = ({ products, onEdit, onDelete, enabledProduct, isNew }) => {
 
     const [searchTerm, setSearchTerm] = useState("");
     const [page, setPage] = useState(0);
-    const [rowsPerPage, setRowsPerPage] = useState(5);
+    const [rowsPerPage, setRowsPerPage] = useState(25);
 
     const handleSearchChange = (event) => {
         setSearchTerm(event.target.value);
@@ -107,12 +108,15 @@ const AdminPanel = ({ products, onEdit, onDelete, enabledProduct, isNew }) => {
                                         />
                                     </TableCell>
                                     <TableCell align="center">
+                                        <Toaster richColors />
                                         <IconButton
                                             color="primary"
                                             onClick={() => onEdit(product.producto_id)}
                                         >
                                             <EditIcon />
                                         </IconButton>
+
+                                        <Toaster richColors />
                                         <IconButton
                                             color="secondary"
                                             onClick={() => onDelete(product.producto_id)}
@@ -125,8 +129,9 @@ const AdminPanel = ({ products, onEdit, onDelete, enabledProduct, isNew }) => {
                             ))}
                     </TableBody>
                     <TableFooter>
-                        <TableRow>
+                        <TableRow style={{ color: "grey !important" }}>
                             <TablePagination
+                                style={{ color: "grey !important" }}
                                 rowsPerPageOptions={[5, 10, 25]}
                                 count={filteredProducts.length}
                                 rowsPerPage={rowsPerPage}

@@ -25,7 +25,7 @@ const AdminPage = () => {
         );
 
         try {
-            const response = await fetch(`${process.env.REACT_APP_API}allproducts/${id}`, {
+            const response = await fetch(`${process.env.REACT_APP_API}products/${id}`, {
                 method: 'DELETE'
             });
 

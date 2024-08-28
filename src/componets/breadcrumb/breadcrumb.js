@@ -7,7 +7,7 @@ const Breadcrumb = ({ currentProduct }) => {
     return (
         <nav className="breadcrumb">
             <Link to="/" className="breadcrumb-link">
-                <FaHome className="breadcrumb-icon" /> Inicio
+                <FaHome className="breadcrumb-icon" style={{color: "#555 !important"}}/> Inicio
             </Link>
             <span className="breadcrumb-item">
                 <FaChevronRight className="breadcrumb-separator" />

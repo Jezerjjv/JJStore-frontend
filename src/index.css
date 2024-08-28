@@ -11,3 +11,8 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.css-levciy-MuiTablePagination-displayedRows{
+  color: grey !important;
+  margin-top: 12px;
+}

@@ -14,7 +14,7 @@ export const Header = () => {
     return (
         <div className="header">
             <div className="header-c">
-                <a href="/">
+                <a href="/" className="color-white">
                     <div className="flex items-center space-x-3">
                         <motion.svg
                             width="100"
@@ -101,9 +101,9 @@ export const Header = () => {
                 </a>
                 <nav className={`nav ${isMenuOpen ? 'active' : ''}`}>
                     <ul className="nav-links">
-                        <li><a href="/">Inicio</a></li>
-                        <li><a href="/">Productos</a></li>
-                        <li><a href="/"><i className="fas fa-sign-in-alt"></i></a></li>
+                        <li><a className="color-white" href="/">Inicio</a></li>
+                        <li><a className="color-white" href="/products">Productos</a></li>
+                        <li><a  className="color-white" href="/"><i className="fas fa-sign-in-alt"></i></a></li>
                     </ul>
                 </nav>
                 <div className="menu-toggle" onClick={toggleMenu}>

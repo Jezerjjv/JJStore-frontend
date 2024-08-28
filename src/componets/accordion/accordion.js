@@ -58,7 +58,7 @@ export const DetailProduct = ({ options }) => {
     const productPrice = parseFloat(options.precio);
     const discountedPrice = productPrice - (productPrice * options.descuento) / 100;
     const telegramUsername = "JezerStore";
-
+    const splitDescription = options.descripcion.split("\n");
 
     const handleTelegramClick = () => {
         window.open(`https://t.me/${telegramUsername}`, '_blank');
@@ -73,9 +73,12 @@ export const DetailProduct = ({ options }) => {
             >
             </AccordionSummary>
             <AccordionDetails>
-                <h1>{options.nombre}</h1>
-
-                <p style={{ textAlign: "justify" }}>{options.descripcion}</p>
+                <h1 style={{ color: "grey !important" }}>{options.nombre}</h1>
+                <div style={{ textAlign: "justify" }}>
+                    {splitDescription.map(m => {
+                        return <p>{m}</p>
+                    })}
+                </div>
                 {options.descuento > 0 ? (
                     <div className="price-section">
                         <span className="original-price">€{productPrice.toFixed(2)}</span>
