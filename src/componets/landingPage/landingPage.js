@@ -177,7 +177,7 @@ export default function LandingPage() {
                 <div className="container">
                     <div className="row justify-content-center">
                         <div className="col-md-6 text-center">
-                            <p className="mb-4">¿Tienes alguna pregunta o proyecto en mente? ¡Contáctanos a través de estos canales!</p>
+                            <p className="mb-4 color-white">¿Tienes alguna pregunta o proyecto en mente? ¡Contáctanos a través de estos canales!</p>
                             <div className="d-flex justify-content-center gap-4">
                                 <motion.a
                                     href={`https://t.me/${telegramUsername}`}

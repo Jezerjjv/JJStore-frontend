@@ -7,7 +7,6 @@ export const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const toggleMenu = () => {
-        console.log("hola");
         setIsMenuOpen(!isMenuOpen);
     };
 
