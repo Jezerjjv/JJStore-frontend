@@ -16,8 +16,7 @@ import LandingPage from '../componets/landingPage/landingPage';
 
 import { Header } from '../componets/header/header';
 import { Footer } from '../componets/footer/footer';
-import LandingPage2 from '../componets/prueba';
-
+import { LandingPage2 } from '../componets/prueba';
 const Rutas = () => {
     return (
         <Router>
@@ -29,7 +28,6 @@ const Rutas = () => {
                 <Route exact path="/panel" element={displayPageCommon(<AdminPage />)} />
                 <Route exact path="/panel/categories" element={displayPageCommon(<Component />)} />
                 <Route exact path="/panel/colors" element={displayPageCommon(<ColorAdminPanel />)} />
-                <Route exact path="/pruebas" element={displayPageCommon(<LandingPage2 />)} />
                 <Route exact path="*" element={displayPageCommon(<Page404 />)} />
             </Routes>
         </Router>

@@ -21,6 +21,7 @@ import { Loader } from '../../loader/loader';
 import OutOfService from '../../error/outOfService/outOfService';
 import { GetColors } from '../../../services/colors';
 import { SaveProduct } from '../../../services/product';
+import { Toaster, toast } from 'sonner'
 
 export const ProductForm = () => {
     const [open, setOpen] = React.useState(false);
@@ -48,7 +49,7 @@ export const ProductForm = () => {
     };
 
 
-    const onSubmit = (product) => {
+    const onSubmit = () => {
         const requestProduct = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -56,7 +57,7 @@ export const ProductForm = () => {
                 values: values
             })
         };
-        SaveProduct(requestProduct)
+        SaveProduct(requestProduct);
     }
 
     const handleSubmit = (e) => {
@@ -64,6 +65,8 @@ export const ProductForm = () => {
         if (validateForm()) {
             values["selectedColors"] = selectedColors;
             onSubmit(values);
+            handleClose();
+            toast.success('Se ha dado de alta el producto');
         }
         setValues({
             nombre: "",
@@ -72,7 +75,7 @@ export const ProductForm = () => {
             categoria_id: "",
             descuento: 0,
             es_nuevo: false,
-            profundidad:0,
+            profundidad: 0,
             ancho: 0,
             alto: 0,
             habilitado: false,
@@ -80,7 +83,6 @@ export const ProductForm = () => {
             imageUrls: [],
             selectedColors: []
         })
-        handleClose();
     };
 
 
@@ -93,7 +95,6 @@ export const ProductForm = () => {
             [name]: value,
         };
         setValues(newValues);
-        console.log(values);
     }
 
     const handleColorChange = (color) => {
@@ -396,6 +397,7 @@ export const ProductForm = () => {
                             </Box>
                         ))}
 
+                        <Toaster richColors />
                         <IconButton onClick={addImageUrlField} color="primary">
                             <AddIcon />
                             <Typography variant="body2" ml={1}>
