@@ -87,7 +87,7 @@ export default function LandingPage() {
                     <h1 className="display-4 fw-bold mb-4 color-white">JJ Store</h1>
                     <Printer3DAnimation />
                     <p className="lead mb-3" style={{color: "#F56565"}} >Transformando ideas en realidad, capa por capa</p>
-                    <p className="mb-4 color-white" style={{ width: "50%", margin: "0px auto" }}>
+                    <p className="mb-4 color-white" >
                         En JJ Store, nos especializamos en llevar tus conceptos más audaces a la vida tangible.
                         Nuestra tecnología de vanguardia y nuestro equipo de expertos están listos para convertir
                         tus diseños digitales en objetos físicos de alta calidad. Ya sea que necesites un prototipo
